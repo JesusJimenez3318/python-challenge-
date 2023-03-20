@@ -1,7 +1,7 @@
 import os
 import csv 
 
-file_path = "C:/Users/JJ/Documents/Data BC/Asignments/python-challenge-/PyBank/Resources/budget_data.csv"
+file_path = "Resources/budget_data.csv"
 
 date=[] 
 budget=[]
