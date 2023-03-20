@@ -1,7 +1,7 @@
 import os
 import csv 
 
-file_path = "Resources/budget_data.csv"
+file_path = "Resources/election_data.csv"
 
 date=[] 
 budget=[]
