@@ -3,73 +3,45 @@ import csv
 
 file_path = "Resources/election_data.csv"
 
-ballot_id =[]
-county = []
-candidate = [] 
-newcandidate = []
+election_data = {}
+winner = ""  
+winnervotes = 0
+
 
 with open(file_path, 'r') as csvfile: 
     csvreader = csv.reader(csvfile, delimiter = ',')
-   
+    next(csvreader)
     
-#create 3 variables that contain the location of the data you want to add to your dictonary 
 
     for row in csvreader: 
-        ballot_id.append(row[0])
-        county.append(row[1])
-        candidate.append(row[2])
+        candidate=row[2]
+        if candidate not in election_data:
+            election_data[candidate] = 0 
 
-    election_data = {} 
-    election_data = {"ballot_id": ballot_id,"county":county,"candidate":candidate} 
-    
-    totalvotes = len(ballot_id)
+        election_data[candidate] += 1
 
-    for value in candidate:
-        if value not in newcandidate: 
-            newcandidate.append(value)
-    print(newcandidate)
+        if election_data[candidate] > winnervotes: 
+            winnervotes = election_data[candidate]  
+            winner = candidate
 
 
 
+print("Election Results")
+print("------------------------")
+print("Total Votes",sum(election_data.values()))
+print("------------------------")
+print(election_data)
+print("------------------------")
+# print(election_data.keys())
+# print(election_data.values())
+print(winner, winnervotes)
+print("------------------------")
 
 
-    
-
-    # for votes in candidate:
-    #     if votes not in newcandidate:
-    #         candidate[votes] = 0
-    #     election_data[votes] = election_data[votes] + 1
-
-    #final_list = [{'num' : votes, 'count': election_data[votes]} for votes in election_data]
-
-
-#print(final_list)
-print(totalvotes)
-
-
-    
-   
 
 
 
 
 
-# A complete list of candidates who received votes
+    
 
-
-
-
-
-# The percentage of votes each candidate won
-
-
-
-
-
-# The total number of votes each candidate won
-
-
-
-
-
-# The winner of the election based on popular vote
